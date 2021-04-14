@@ -22,4 +22,19 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            //Se suma 10 puntos al Score
+            PlayerScore._playerScore += 10;
+        }
+        else if (other.tag == "Base")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
