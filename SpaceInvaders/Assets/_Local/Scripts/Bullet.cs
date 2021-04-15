@@ -33,7 +33,11 @@ public class Bullet : MonoBehaviour
         }
         else if (other.tag == "Base")
         {
+			//GameObject playerBase = other.gameObject;
+            //BaseHealth baseHealth = playerBase.GetComponent<BaseHealth>();
+            //baseHealth.set_Health(-1f);
             Destroy(gameObject);
+            
         }
     }
 
