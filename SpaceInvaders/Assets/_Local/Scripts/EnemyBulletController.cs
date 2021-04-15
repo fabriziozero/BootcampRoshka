@@ -16,7 +16,7 @@ public class EnemyBulletController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        _bulletEnemy.position += Vector3.down * _speed;
+        _bulletEnemy.position += Vector3.down * _speed * Time.deltaTime;
         //Si sale de la pantalla hacia abajo la bala enemiga se destruye
         if (_bulletEnemy.position.y <= 0)
         {
