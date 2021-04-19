@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
 		_contenedorEnemy.position += Vector3.right * _speed;
 		foreach(Transform enemy in _contenedorEnemy)
 		{
-			Debug.Log(_contenedorEnemy.childCount);
+			//Debug.Log(_contenedorEnemy.childCount);
 			if (enemy.position.x < -13.5f || enemy.position.x > 13.5f)
 			{
 				_speed = -_speed;
@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
 			{
 				CancelInvoke();
 				InvokeRepeating("MoveEnemy",0.1f * Time.deltaTime,0.25f * Time.deltaTime);
-				//ebug.Log(_contenedorEnemy.childCount);
+				//Debug.Log(_contenedorEnemy.childCount);
 			}
 
 			if (_contenedorEnemy.childCount == 0)
@@ -61,13 +61,15 @@ public class EnemyController : MonoBehaviour
 			}
 
 		}
-		void Update()
+
+		
+	}
+	void Update()
+	{
+		if (_contenedorEnemy.childCount == 0)
 		{
-			if (_contenedorEnemy.childCount == 0)
-			{
-				//Debug.Log("Win");
-				_win.enabled = true;
-			}
+			//Debug.Log("Win");
+			_win.enabled = true;
 		}
 	}
 
