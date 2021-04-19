@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxBound = 13.5f, minBound = -13.5f; //Limites de camara
     [SerializeField] private GameObject shot;//referencia a GameObject Bullet
     [SerializeField] private Transform shotSpawn; //Desde donde se va a generar la bala
-    [SerializeField] private float fireRate;// Cadencia de disparo
+    [SerializeField] private float fireRate = 0.5f;// Cadencia de disparo
     [SerializeField] private float nextFire;// intervalo entre cada disparo
     [SerializeField] private float speed = 9f; //Velocidad con la que se mueve el player
     
@@ -40,7 +40,9 @@ public class Player : MonoBehaviour
     {
         //If the Fire1 button is pressed, a projectile
         //will be Instantiated every 0.5 seconds.
-        if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+        if (Input.GetButton ("Fire1") && Time.time > nextFire)
+        {
+            //soundManager.SendMessage("BulletSound");
             nextFire = Time.time + fireRate;
             Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
         }

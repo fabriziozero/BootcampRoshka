@@ -7,6 +7,10 @@ TagManager:
   - Bullet
   - Base
   - Enemy
+  - Explosion
+  - EnemyBullet
+  - RedEnemy
+  - PurpleEnemy
   layers:
   - Default
   - TransparentFX

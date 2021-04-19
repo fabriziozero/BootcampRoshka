@@ -11,15 +11,15 @@ public class PlayerScore : MonoBehaviour
     private Text _scoreText;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _scoreText = GetComponent<Text>();
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        _scoreText.text = "Score" + _playerScore;
+        _scoreText.text = "Score " + _playerScore;
     }
 }

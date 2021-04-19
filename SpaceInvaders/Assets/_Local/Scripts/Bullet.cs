@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    
     private Transform _bullet;
-    [SerializeField] private float _speedBullet = 15f;
+    [SerializeField] private float speedBullet = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        _bullet.position += Vector3.up * _speedBullet * Time.deltaTime;
+        _bullet.position += Vector3.up * speedBullet * Time.fixedDeltaTime;
         if (_bullet.position.y >= 22.5)
         {
             Destroy(gameObject);
@@ -24,20 +25,18 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+        if ((other.tag == "RedEnemy") || (other.tag == "PurpleEnemy"))
+        {   
+            GameObject enemy1 = other.gameObject;
+            EnemyHealth enemyHealth = enemy1.GetComponent<EnemyHealth>();
+            enemyHealth.set_Health(-1f);
+            Destroy(this.gameObject);
             //Se suma 10 puntos al Score
             PlayerScore._playerScore += 10;
         }
         else if (other.tag == "Base")
         {
-			//GameObject playerBase = other.gameObject;
-            //BaseHealth baseHealth = playerBase.GetComponent<BaseHealth>();
-            //baseHealth.set_Health(-1f);
-            Destroy(gameObject);
-            
+			Destroy(gameObject);
         }
     }
 

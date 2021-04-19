@@ -8,27 +8,26 @@ public class EnemyController : MonoBehaviour
 
 	private Transform _contenedorEnemy;
 	[SerializeField] private float _speed;
-	
+	private GameObject typeEnemy;
 	public GameObject _shot;
 	public Text _win;
 	public float _fireRate = 1f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-		//_win = GetComponent<Text>();
+		
         _win.enabled = false;
 		InvokeRepeating("MoveEnemy", 0.1f * Time.deltaTime,0.3f * Time.deltaTime);
 		_contenedorEnemy = GetComponent<Transform>();
     }
-	
-	void MoveEnemy()
+
+    private void MoveEnemy()
 	{
-		//_contenedorEnemy.position += Vector3.right * _speed * Time.deltaTime;
 		_contenedorEnemy.position += Vector3.right * _speed;
 		foreach(Transform enemy in _contenedorEnemy)
 		{
-			//Debug.Log(_contenedorEnemy.childCount);
+			
 			if (enemy.position.x < -13.5f || enemy.position.x > 13.5f)
 			{
 				_speed = -_speed;
@@ -36,9 +35,12 @@ public class EnemyController : MonoBehaviour
 				break;
 			}
 
-			if(Random.value > _fireRate)
+			if (enemy.CompareTag("RedEnemy"))
 			{
-				Instantiate(_shot,enemy.position,enemy.rotation);
+				if(Random.value > _fireRate)
+				{
+					Instantiate(_shot,enemy.position,enemy.rotation);
+				}
 			}
 
 			if (enemy.position.y <= 0.5f)
@@ -54,18 +56,25 @@ public class EnemyController : MonoBehaviour
 				//Debug.Log(_contenedorEnemy.childCount);
 			}
 
-			if (_contenedorEnemy.childCount == 0)
-			{
-				//Debug.Log("Win");
-				_win.enabled = true;
-			}
+			// if (_contenedorEnemy.childCount == 0)
+			// {
+			// 	//Debug.Log("Win");
+			// 	_win.enabled = true;
+			// }
 
 		}
 
 		
 	}
+
+    // void FixedUpdate
+    // {
+	   //  
+    // }
+	
 	void Update()
 	{
+		//si no hay enemigos entonces el nivel esta completado
 		if (_contenedorEnemy.childCount == 0)
 		{
 			//Debug.Log("Win");
