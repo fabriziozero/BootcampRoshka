@@ -9,6 +9,7 @@ TagManager:
   - Saw_Blade
   - Btn_Cut
   - Btn_Play
+  - Forest
   layers:
   - Default
   - TransparentFX
