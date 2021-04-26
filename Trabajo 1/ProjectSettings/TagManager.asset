@@ -8,6 +8,7 @@ TagManager:
   - Trunk
   - Saw_Blade
   - Btn_Cut
+  - Btn_Play
   layers:
   - Default
   - TransparentFX
