@@ -5,7 +5,18 @@ using UnityEngine;
 public class SawController : MonoBehaviour
 {
     private Transform _sawBlade;
+    private GameObject _player;
+    //private Transform _playerTransform;
+    private Vector3 _position;
     [SerializeField] private float speedSaw = 15f;
+
+    private void Awake()
+    {
+        _player = GameObject.FindWithTag("Player");
+        //_playerTransform = gameObject.transform.GetComponent<Transform>();
+        _position = _player.transform.position;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +25,9 @@ public class SawController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        float recorrido = _position[2];
         _sawBlade.position += Vector3.forward * speedSaw * Time.fixedDeltaTime;
-        if (_sawBlade.position.z >= 1)
+        if (_sawBlade.position.z >= recorrido+20)
         {
             Destroy(gameObject);
         }
