@@ -67,7 +67,7 @@ public class TreeController : MonoBehaviour
         {
             Destroy(_Tree);
             _position = _player.transform.position; //iguala a la posicion del player en ese momento
-            LeanTween.moveZ(_player, (_position[2]+50), 5f).setEaseLinear();
+            LeanTween.moveZ(_player, (_position[2]+50), 3f).setEaseLinear();
             camaras.SendMessage("ChangeCamera");
             //switchCameras.ChangeCamera();
             //CambiarCamara();
@@ -114,7 +114,7 @@ public class TreeController : MonoBehaviour
     public void BajarTree()
     {
         _positionTree = this.gameObject.transform.position;
-        LeanTween.moveY(_Tree, (_positionTree[1]-6f), 1f).setEaseLinear();
+        LeanTween.moveY(_Tree, (_positionTree[1]-6f), 0.5f).setEaseLinear();
     }
 
     /*public void CambiarCamara()

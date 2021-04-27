@@ -8,10 +8,12 @@ public class Cut : MonoBehaviour
     //ATRIBUTOS
     private GameObject _player;
     public Button btnCut;
+    public float tweenTime;
     [SerializeField] private GameObject shot;//referencia a GameObject Saw_Blade
     [SerializeField] private Transform shotSpawn; //Desde donde se va a generar la sierra
     [SerializeField] private float fireRate = 0.5f;// Cadencia de disparo
     [SerializeField] private float nextFire;// intervalo entre cada disparo
+    
     
     //METODOS
     void Awake()
@@ -32,7 +34,9 @@ public class Cut : MonoBehaviour
             LeanTween.scale(_player, Vector3.one, 0.5f).setEasePunch();
             nextFire = Time.time + fireRate; //proximo disparo
             Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-            
+            LeanTween.value(gameObject, 0, 1, tweenTime)
+                .setEasePunch();
+
         }
     }
 
