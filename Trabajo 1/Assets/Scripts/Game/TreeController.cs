@@ -7,6 +7,9 @@ using UnityEngine;
 public class TreeController : MonoBehaviour
 {
     ///ATRIBUTOS
+
+    public GameObject camaras;
+    //public SwitchCameras switchCameras;
     private int banSube;//variable bandera que indica que el arbol no subio 0=NO y 1=SI
     private GameObject _player; //referencia a player
     private Vector3 _position; //posicion de player
@@ -65,6 +68,9 @@ public class TreeController : MonoBehaviour
             Destroy(_Tree);
             _position = _player.transform.position; //iguala a la posicion del player en ese momento
             LeanTween.moveZ(_player, (_position[2]+50), 5f).setEaseLinear();
+            camaras.SendMessage("ChangeCamera");
+            //switchCameras.ChangeCamera();
+            //CambiarCamara();
         }
         
     }
@@ -74,10 +80,10 @@ public class TreeController : MonoBehaviour
         //Si el player esta cerca y el Tree todavia no subio entonces
         if ((PlayerIsNear(_position)) && (banSube == 0))
         {
-            LeanTween.moveY(_Tree, 0f, 2f).setEaseLinear(); //Se le hace subir
-            LeanTween.rotateY(_Tree, 90f, 2f).setEaseInSine();//y rotar
+            LeanTween.moveY(_Tree, 0f, 1f).setEaseLinear(); //Se le hace subir
+            LeanTween.rotateY(_Tree, 90f, 1f).setEaseInSine();//y rotar
             banSube = 1; //se marca que subio
-            Debug.Log("Sube");
+            //Debug.Log("Sube");
         }
     }
 
@@ -110,4 +116,10 @@ public class TreeController : MonoBehaviour
         _positionTree = this.gameObject.transform.position;
         LeanTween.moveY(_Tree, (_positionTree[1]-6f), 1f).setEaseLinear();
     }
+
+    /*public void CambiarCamara()
+    {
+        switchCameras.ChangeCamera();
+    }*/
+    
 }

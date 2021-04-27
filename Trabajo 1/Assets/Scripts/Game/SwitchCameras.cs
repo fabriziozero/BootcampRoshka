@@ -33,7 +33,6 @@ public class SwitchCameras : MonoBehaviour
     {
         ResetPriority();
         listCameras[currentCamera].Priority = 1;
-        //StartCoroutine(ChangeCamera());
     }
     
 
@@ -44,6 +43,16 @@ public class SwitchCameras : MonoBehaviour
             listCameras[i].Priority = 0;
         }
     }
-  
     
+    public void ChangeCamera()
+    {
+        
+        ResetPriority();
+        if (currentCamera < (listCameras.Count-1))
+        {
+            currentCamera++;
+        }
+        listCameras[currentCamera].Priority = 1;
+    }
+   
 }
