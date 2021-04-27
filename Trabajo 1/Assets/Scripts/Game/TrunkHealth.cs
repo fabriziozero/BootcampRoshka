@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class TrunkHealth : MonoBehaviour
 {
-    [SerializeField] private float trunkHealth = 3; // variable Salud
-    public void set_Health (float health)
-    {
-        trunkHealth += health; 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    public TreeController treeController;
+    [SerializeField] private float health; // variable Salud
 
+    void Awake()
+    {
+        health = 3;
+    }
     // Update is called once per frame
     void Update()
     {
         //Si la vida es menor a 0, trunk se destruye
-        if (trunkHealth <= 0)
+        if (health <= 0)
         {
-            //PlayerScore._playerScore += 10;
-            Destroy(gameObject);
+            
+            Score.scoreValue += 10;
+            Destroy(this.gameObject);
+            treeController.BajarTree();
+            //gameObject.SendMessage("BajarTree");
+
         }
+    }
+    //Se le suma una cantidad de vida x
+    public void setHealth (float x)
+    {
+        Score.scoreValue += 1;
+        this.health += x; 
     }
 }

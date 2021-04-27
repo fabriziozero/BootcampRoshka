@@ -10,6 +10,8 @@ TagManager:
   - Btn_Cut
   - Btn_Play
   - Forest
+  - BtnPause
+  - TxtPuntaje
   layers:
   - Default
   - TransparentFX

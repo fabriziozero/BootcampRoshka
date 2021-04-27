@@ -37,12 +37,13 @@ public class SawController : MonoBehaviour
     {
         if (other.tag == "Trunk")
         {   
+            //se le baja 1 de vida a Trunk
             GameObject trunk = other.gameObject;
             TrunkHealth trunkHealth = trunk.GetComponent<TrunkHealth>();
-            trunkHealth.set_Health(-1f);
+            trunkHealth.setHealth(-1f);
+            //se destruye la sierra
             Destroy(this.gameObject);
-            //Se suma 10 puntos al Score
-            //PlayerScore._playerScore += 10;
+            
         }
     }
 }
