@@ -57,41 +57,5 @@ public class SwitchCameras : MonoBehaviour
             listCameras[i].Priority = 0;
         }
     }
-    /*
-     [SerializeField] private CinemachineVirtualCamera[] _listCameras;
-     
-    
-    
-    private int _currentCamera = 0;
-    
-        // Start is called before the first frame update
-    void Start()
-    {
-        ResetPriority();
-        _listCameras[0].Priority = 1;
-        StartCoroutine(ChangeCamera());
-    }
-    
-    IEnumerator ChangeCamera()
-    {
-        yield return new WaitForSeconds(3f);
-        ResetPriority();
-        _listCameras[_currentCamera].Priority = 1;
-        _currentCamera++;
-        if (_currentCamera == _listCameras.Length)
-        {
-            _currentCamera = 0;
-        }
-    
-        StartCoroutine(ChangeCamera());
-    }
-    
-    private void ResetPriority()
-    {
-        for (int i = 0; i < _listCameras.Length; i++)
-        {
-                _listCameras[i].Priority = 0;
-        }
-    }*/
-    
+        
 }
